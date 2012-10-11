@@ -1,0 +1,48 @@
+
+h1. StarCluster based image sharpening with imagemagick
+
+p. This is a collection of a few helper scripts I wrote a while ago when I had to sharpen a large amount of image files in a very specific (and cpu-intensive) way. The naming of the scripts is very simple: scripts with "local" in the name are meant to be run locally and those with "remote" are intended to run on the cluster master node.
+
+* 01_local_copyscripts.sh
+copies all scripts that need to be on the cluster to the master node
+
+* 02_remote_setup.sh
+installs imagemagick and sets up the inbox and outbox on the cluster master
+
+* 03_local_upload.sh
+uploads the images from the local outbox to the master
+
+* 04_remote_submitjobs.sh
+submits the images from the remote inbox to the cluster job queue
+
+* 05_remote_executejobs.sh
+the actual job script
+
+* 06_local_retrieveresults.sh
+downloads the images done from the remote outbox to the local outbox
+
+p. The scripts 03, 04 and 06 can and should run at the same time in parallel to ensure a constant stream of uploading, processing and downloading
+
+h1. License
+
+<pre>
+Copyright (c) 2012 Patrick Huber <stackmagic@gmail.com>
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+</pre>
